@@ -182,3 +182,4 @@ with open('in.txt', 'r', encoding='utf-8') as f_input, open('out.txt', 'w', enco
     max_val = height(my_tree.root)
     delete_second_val(my_tree.root, max_val)
     pre_order_traversal(my_tree.root)
+
