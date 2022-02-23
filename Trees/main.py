@@ -171,7 +171,7 @@ def pre_order_traversal(v):
             queue.append(node.left)
 
 
-with open('../inputs/in.txt', 'r', encoding='utf-8') as f_input, open('../outputs/out.txt', 'w', encoding='utf-8') as f_output:
+with open('../Individual_task/inputs/in.txt', 'r', encoding='utf-8') as f_input, open('../Individual_task/outputs/out.txt', 'w', encoding='utf-8') as f_output:
     my_tree = Tree()
     tree = int(f_input.readline())
     insert(tree)
