@@ -92,7 +92,7 @@ def height(v):
         else:
             prev = v
             v = None
-            prev.height = max(h, prev.height)
+            prev.height = max(h, prev.height) + 1
             if prev.left and prev.right:
                 prev.msl = prev.left.height + prev.right.height + 2
             elif prev.left:
