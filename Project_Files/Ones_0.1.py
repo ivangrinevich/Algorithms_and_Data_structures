@@ -1,9 +1,6 @@
 n, k = [int(i) for i in input().split()]
 f = [[0 for _ in range(n)] for _ in range(n)]
 f[0][0] = 1
-for i in range(1, n):
-    for j in range(i + 1):
-        f[i][j] = 0
 for i in range(n - 1):
     for j in range(i + 1):
         f[i + 1][j] = f[i + 1][j] + f[i][j]
