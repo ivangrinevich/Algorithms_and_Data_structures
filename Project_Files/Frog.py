@@ -23,4 +23,3 @@ if n > 1:
 else:
     print(array[0])
     print(1)
-
