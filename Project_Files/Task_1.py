@@ -4,9 +4,9 @@ f = [1 for _ in range(n)]
 l = set(m)
 i = 0
 if len(l) == 1 and l != {0}:
-    print(0)
+    print(len(m))
 elif l == {0}:
-    print(len(m) - 1)
+    print(0)
 else:
     for i in range(1, n):
         j = 0
@@ -18,4 +18,4 @@ else:
             else:
                 j += 1
 
-    print(len(m) - max(f))
+    print(max(f))
