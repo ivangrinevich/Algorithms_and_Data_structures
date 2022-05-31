@@ -21,9 +21,11 @@ for i in range(1, m):
         elif height_matrix[i - 1][j - 1] < pokemon_heights[i] + pedestal_heights[j]:
             height_matrix[i][j] = max_value
         elif i != j and height_matrix[i - 1][j - 1] > pokemon_heights[i] + pedestal_heights[j]:
-            height_matrix[i][j] = max_value
+            height_matrix[i][j] = height_matrix[i - 1][j - 1]
         else:
             height_matrix[i][j] = -1
+for i in height_matrix:
+    print(*i)
 i = m - 1
 j = n - 1
 positions = []
@@ -37,5 +39,54 @@ while 0 <= i <= j:
 if len(positions) == m:
     for i in sorted(positions):
         print(i + 1, end=' ')
+else:
+    print(-1)
+m, n = [int(i) for i in input().split()]
+pokemon_heights = [int(i) for i in input().split()]
+pedestal_heights = [int(i) for i in input().split()]
+height_matrix = [[0 for i in range(n)]for i in range(m)]
+
+height_matrix[0][0] = pokemon_heights[0] + pedestal_heights[0]
+for i in range(1, n):
+    if pokemon_heights[0] + pedestal_heights[i] < height_matrix[0][i-1]:
+        height_matrix[0][i] = pokemon_heights[0] + pedestal_heights[i]
+    else:
+        height_matrix[0][i] = height_matrix[0][i-1]
+
+
+for i in range(1, m):
+    for j in range(i, n):
+        if pokemon_heights[i] + pedestal_heights[j] <= height_matrix[i-1][j-1]:
+            if height_matrix[i][j-1] != 0 and height_matrix != -1:
+                height_matrix[i][j] = height_matrix[i][j-1]
+            else:
+                height_matrix[i][j] = -1
+        else:
+            if height_matrix[i][j - 1] == -1 or height_matrix[i][j-1] == 0:
+                height_matrix[i][j] = pokemon_heights[i] + pedestal_heights[j]
+            elif (height_matrix[i][j-1] != 0 and height_matrix[i][j-1] != -1) and pokemon_heights[i] + pedestal_heights[j] < height_matrix[i][j-1]:
+                height_matrix[i][j] = pokemon_heights[i] + pedestal_heights[j]
+            else:
+                height_matrix[i][j] = height_matrix[i][j-1]
+
+
+for i in height_matrix:
+    print(i)
+
+i = m - 1
+j = n - 1
+positions = []
+
+while j >= i and (i >= 0 and j >= 0):
+    if height_matrix[i][j] == pokemon_heights[i] + pedestal_heights[j]:
+        positions.append(j)
+        i -= 1
+        j -= 1
+    else:
+        j -= 1
+
+if len(positions) == m:
+    for i in sorted(positions):
+        print(i + 1, end=" ")
 else:
     print(-1)
