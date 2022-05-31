@@ -21,7 +21,7 @@ for i in range(1, m):
         elif height_matrix[i - 1][j - 1] < pokemon_heights[i] + pedestal_heights[j]:
             height_matrix[i][j] = max_value
         elif i != j and height_matrix[i - 1][j - 1] > pokemon_heights[i] + pedestal_heights[j]:
-            height_matrix[i][j] = height_matrix[i - 1][j - 1]
+            height_matrix[i][j] = height_matrix[i][j - 1]
         else:
             height_matrix[i][j] = -1
 for i in height_matrix:
